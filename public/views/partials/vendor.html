@@ -1,0 +1,130 @@
+<nav class="navbar navbar navbar-default navbar-static-top" style="padding-bottom:10px;">
+
+    <a class="navbar-brand" href="/">
+        <img src="/images/raise-white.png" style="width:inherit;height:inherit;margin-top:-15px;margin-left:-15px;">
+    </a>
+
+    <a class="navbar-brand" href="/" style="color:#4fc094; font-family:Proxima Nova;">
+        Raise Arbitrage Simulator
+    </a>
+
+    <form class="form-inline margin-top" ng-controller="requestController" ng-submit="processRequest()">
+        <input type="text" placeholder="Search for other vendors..." name="requestType" required  ng-model="vendorRequest"  class="form-control" style="width:50%; border-color:#4fc094; font-family:Proxima Nova; color:#4fc094;">
+        <button type="submit" class="search-button" style="background-color:#4fc094; font-family:Proxima Nova; -webkit-border-radius: 4px; border-radius: 4px; padding-top:3px; padding-bottom:6px; font-size:18px;">
+            Search
+        </button>
+    </form>
+
+</nav>
+
+</br>
+
+<div class="container">
+	<div ng-show="{{message!==undefined}}">
+		<center><p style="font-size:30px; font-family:Proxima Nova; color:white;">{{message}}</p></center>
+	</div>
+	<div ng-show="{{message===undefined}}">
+		<center><img src="http://frugalspartan.com/wp-content/uploads/2016/01/Raise_Logo_MintBackground-1.jpg"/></center>
+		<div class="container col-md-2"></div>
+		<div class="container col-md-8">
+			<center><h1 style="font-family:Proxima Nova Bold; color:white;">Arbitrage Summary: {{vendor}}</h1></center>
+			<table class="table table-hover" style="font-family:Proxima Nova;">
+				<tbody>
+					<tr>
+						<td color="white">
+							Arbitrage Profit
+						</td>
+						<td align="right">
+							${{profit}}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Cards Bought
+						</td>
+						<td align="right">
+							{{card}}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Cost
+						</td>
+						<td align="right">
+							${{dollar}}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Return on Investment
+						</td>
+						<td align="right">
+							{{roi}}%
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			</br>
+			</br>
+			<center><h1 style="font-family:Proxima Nova Bold; color:white;">Market Summary</h1></center>
+			<table class=" table table-hover" style="font-family:Proxima Nova; color:white; font-size:18px;">
+				<tbody>
+					<tr>
+						<th>
+							Vendor
+						</th>
+						<th>
+							Profit
+						</th>
+						<th>
+							Cards
+						</th>
+						<th>
+							Cost
+						</th>
+						<th>
+							ROI
+						</th>
+					</tr>
+					<div>
+						<tr ng-repeat="vendor in vendorList track by $index"">
+							<td style="font-size:16px;">
+								{{vendorList[$index]}}
+							</td>
+							<td style="font-size:16px;">
+								${{profitList[$index]}}
+							</td>
+							<td style="font-size:16px;">
+								{{cardList[$index]}}
+							</td>
+							<td style="font-size:16px;">
+								${{costList[$index]}}
+							</td>
+							<td style="font-size:16px;">
+								{{roiList[$index]}}%
+							</td>
+						</tr>
+					</div>
+				</tbody>
+			</table>
+		</div>
+		<div class="container col-md-2"></div>
+	</div>
+</div>
+
+<div ng-show="{{message!==undefined}}">
+	<div class="footerA" style="background-color:white; color:#4fc094">
+	    <center>
+			<img src="/images/raise-white.png" style="width:200px;"><img src="/images/hackR.png" style="width:200px;">
+		</center>
+	</div>
+</div>
+<div ng-show="{{message===undefined}}">
+	<div class="footerB" style="background-color:white; color:#4fc094">
+	    <center>
+			<img src="/images/raise-white.png" style="width:200px;"><img src="/images/hackR.png" style="width:200px;">
+		</center>
+	</div>
+</div>
+<p>{{tableList}}</p>
+</br>
